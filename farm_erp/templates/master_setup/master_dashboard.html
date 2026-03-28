@@ -1,0 +1,71 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Master Setup{% endblock %}
+{% block page_title %}Master Setup{% endblock %}
+{% block page_subtitle %}Farm foundation data and master records{% endblock %}
+
+{% block content %}
+<div class="card-grid">
+    <div class="info-card">
+        <h3>FARM PROFILES</h3>
+        <h2>{{ farm_count }}</h2>
+        <p>Registered farms</p>
+    </div>
+
+    <div class="info-card">
+        <h3>FIELDS</h3>
+        <h2>{{ field_count }}</h2>
+        <p>Total field plots</p>
+    </div>
+
+    <div class="info-card">
+        <h3>CROPS</h3>
+        <h2>{{ crop_count }}</h2>
+        <p>Available crop masters</p>
+    </div>
+
+    <div class="info-card">
+        <h3>EQUIPMENTS</h3>
+        <h2>{{ equipment_count }}</h2>
+        <p>Registered machinery/equipment</p>
+    </div>
+</div>
+
+<div class="section-box">
+    <h3>Quick Links</h3>
+
+    <div class="quick-links">
+        <div class="quick-card">
+            <a href="{% url 'farm_profile_list' %}">🏡 View Farm Profiles</a>
+        </div>
+
+        <div class="quick-card">
+            <a href="{% url 'field_list' %}">🌾 View Fields</a>
+        </div>
+
+        <div class="quick-card">
+            <a href="{% url 'crop_list' %}">🌱 View Crops</a>
+        </div>
+
+        <div class="quick-card">
+            <a href="{% url 'equipment_list' %}">🚜 View Equipments</a>
+        </div>
+
+        <div class="quick-card">
+            <a href="{% url 'add_farm' %}">➕ Add Farm Profile</a>
+        </div>
+
+        <div class="quick-card">
+            <a href="{% url 'add_field' %}">➕ Add Field</a>
+        </div>
+
+        <div class="quick-card">
+            <a href="{% url 'add_crop' %}">➕ Add Crop</a>
+        </div>
+
+        <div class="quick-card">
+            <a href="{% url 'add_equipment' %}">➕ Add Equipment</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

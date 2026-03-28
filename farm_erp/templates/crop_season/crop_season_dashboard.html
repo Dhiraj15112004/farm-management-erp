@@ -1,0 +1,55 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Crop & Season Management{% endblock %}
+{% block page_title %}Crop & Season Management{% endblock %}
+{% block page_subtitle %}Season planning and field crop assignment{% endblock %}
+
+{% block content %}
+<div class="card-grid">
+    <div class="info-card">
+        <h3>TOTAL SEASONS</h3>
+        <h2>{{ season_count }}</h2>
+        <p>All registered seasons</p>
+    </div>
+
+    <div class="info-card">
+        <h3>FIELD CROP PLANS</h3>
+        <h2>{{ field_plan_count }}</h2>
+        <p>Assigned crop plans</p>
+    </div>
+
+    <div class="info-card">
+        <h3>ACTIVE MODULE</h3>
+        <h2>Planning</h2>
+        <p>Crop scheduling enabled</p>
+    </div>
+
+    <div class="info-card">
+        <h3>STATUS</h3>
+        <h2>Ready</h2>
+        <p>Season module active</p>
+    </div>
+</div>
+
+<div class="section-box">
+    <h3>Quick Links</h3>
+
+    <div class="quick-links">
+        <div class="quick-card">
+            <a href="{% url 'season_list' %}">📅 View Seasons</a>
+        </div>
+
+        <div class="quick-card">
+            <a href="{% url 'field_crop_plan_list' %}">🌱 View Field Crop Plans</a>
+        </div>
+
+        <div class="quick-card">
+            <a href="{% url 'add_season' %}">➕ Add Season</a>
+        </div>
+
+        <div class="quick-card">
+            <a href="{% url 'add_field_crop_plan' %}">➕ Add Field Crop Plan</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

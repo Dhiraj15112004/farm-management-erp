@@ -1,0 +1,15 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block page_title %}{{ title }}{% endblock %}
+{% block page_subtitle %}Field crop plan form{% endblock %}
+
+{% block content %}
+<div class="section-box">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="padding:10px 16px; background:#178443; color:white; border:none; border-radius:8px;">Save</button>
+    </form>
+</div>
+{% endblock %}

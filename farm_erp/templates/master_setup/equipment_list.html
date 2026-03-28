@@ -1,0 +1,35 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Equipment List{% endblock %}
+{% block page_title %}Equipment Master{% endblock %}
+{% block page_subtitle %}All registered farm equipment{% endblock %}
+
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom: 15px;">
+        <a href="{% url 'add_equipment' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add Equipment</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Purchase Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        {% for equipment in equipments %}
+        <tr>
+            <td>{{ equipment.name }}</td>
+            <td>{{ equipment.type }}</td>
+            <td>{{ equipment.purchase_date }}</td>
+            <td>{{ equipment.status }}</td>
+            <td>
+                <a href="{% url 'edit_equipment' equipment.id %}">Edit</a> |
+                <a href="{% url 'delete_equipment' equipment.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Season List{% endblock %}
+{% block page_title %}Season List{% endblock %}
+{% block page_subtitle %}All available crop seasons{% endblock %}
+
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom: 15px;">
+        <a href="{% url 'add_season' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add Season</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        {% for season in seasons %}
+        <tr>
+            <td>{{ season.name }}</td>
+            <td>{{ season.start_date }}</td>
+            <td>{{ season.end_date }}</td>
+            <td>{{ season.status }}</td>
+            <td>
+                <a href="{% url 'edit_season' season.id %}">Edit</a> |
+                <a href="{% url 'delete_season' season.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

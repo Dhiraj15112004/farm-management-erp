@@ -1,0 +1,81 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Worker & Labor{% endblock %}
+{% block page_title %}Worker & Labor Management{% endblock %}
+{% block page_subtitle %}Labor tracking and task management{% endblock %}
+
+{% block content %}
+<div class="card-grid">
+
+    <div class="info-card">
+        <h3>WORKERS</h3>
+        <h2>{{ worker_count }}</h2>
+        <p>Total registered workers</p>
+    </div>
+
+    <div class="info-card">
+        <h3>ATTENDANCE</h3>
+        <h2>{{ attendance_count }}</h2>
+        <p>Worker attendance records</p>
+    </div>
+
+    <div class="info-card">
+        <h3>TASKS</h3>
+        <h2>{{ task_count }}</h2>
+        <p>Assigned labor tasks</p>
+    </div>
+
+    <div class="info-card">
+        <h3>STATUS</h3>
+        <h2>Active</h2>
+        <p>Labor system running</p>
+    </div>
+
+</div>
+
+
+<div class="section-box">
+    <h3>Quick Links</h3>
+
+    <div class="quick-links">
+
+        <div class="quick-card">
+            <a href="{% url 'worker_list' %}">
+                👷 View Workers
+            </a>
+        </div>
+
+        <div class="quick-card">
+            <a href="{% url 'attendance_list' %}">
+                📋 View Attendance
+            </a>
+        </div>
+
+        <div class="quick-card">
+            <a href="{% url 'task_list' %}">
+                📝 View Tasks
+            </a>
+        </div>
+
+        <div class="quick-card">
+            <a href="{% url 'add_worker' %}">
+                ➕ Add Worker
+            </a>
+        </div>
+
+        <div class="quick-card">
+            <a href="{% url 'add_attendance' %}">
+                ➕ Add Attendance
+            </a>
+        </div>
+
+        <div class="quick-card">
+            <a href="{% url 'add_task' %}">
+                ➕ Add Task
+            </a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

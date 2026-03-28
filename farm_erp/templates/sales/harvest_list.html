@@ -1,0 +1,22 @@
+{% extends 'base/erp_base.html' %}
+{% block title %}Harvest{% endblock %}
+{% block page_title %}Harvest{% endblock %}
+{% block page_subtitle %}All harvest records{% endblock %}
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom:15px;">
+        <a href="{% url 'add_harvest' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add Harvest</a>
+    </div>
+    <table>
+        <tr><th>Crop</th><th>Quantity</th><th>Date</th><th>Actions</th></tr>
+        {% for harvest in harvests %}
+        <tr>
+            <td>{{ harvest.crop }}</td>
+            <td>{{ harvest.quantity }}</td>
+            <td>{{ harvest.date }}</td>
+            <td><a href="{% url 'edit_harvest' harvest.id %}">Edit</a> | <a href="{% url 'delete_harvest' harvest.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

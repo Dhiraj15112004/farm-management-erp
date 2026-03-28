@@ -1,0 +1,51 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Storekeeper Dashboard{% endblock %}
+{% block page_title %}Storekeeper Dashboard{% endblock %}
+{% block page_subtitle %}Inventory and stock operations overview{% endblock %}
+
+{% block content %}
+<div class="card-grid">
+    <div class="info-card">
+        <h3>STORE ACCESS</h3>
+        <h2>Active</h2>
+        <p>Inventory module available</p>
+    </div>
+
+    <div class="info-card">
+        <h3>USER</h3>
+        <h2>{{ request.user.username }}</h2>
+        <p>Logged in as {{ request.user.role }}</p>
+    </div>
+
+    <div class="info-card">
+        <h3>MODULE</h3>
+        <h2>Inventory</h2>
+        <p>Stock in / stock out control</p>
+    </div>
+
+    <div class="info-card">
+        <h3>STATUS</h3>
+        <h2>Ready</h2>
+        <p>Store operations enabled</p>
+    </div>
+</div>
+
+<div class="section-box">
+    <h3>Quick Links</h3>
+    <div class="quick-links">
+        <div class="quick-card">
+            <a href="{% url 'inventory_dashboard' %}">📦 Open Inventory Dashboard</a>
+        </div>
+        <div class="quick-card">
+            <a href="{% url 'item_list' %}">📋 View Inventory Items</a>
+        </div>
+        <div class="quick-card">
+            <a href="{% url 'stock_in_list' %}">📥 View Stock In</a>
+        </div>
+        <div class="quick-card">
+            <a href="{% url 'stock_out_list' %}">📤 View Stock Out</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

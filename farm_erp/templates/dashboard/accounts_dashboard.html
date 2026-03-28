@@ -1,0 +1,51 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Accountant Dashboard{% endblock %}
+{% block page_title %}Accountant Dashboard{% endblock %}
+{% block page_subtitle %}Finance and sales summary overview{% endblock %}
+
+{% block content %}
+<div class="card-grid">
+    <div class="info-card">
+        <h3>FINANCE ACCESS</h3>
+        <h2>Active</h2>
+        <p>Expense and income module available</p>
+    </div>
+
+    <div class="info-card">
+        <h3>SALES ACCESS</h3>
+        <h2>Active</h2>
+        <p>Harvest and sales module available</p>
+    </div>
+
+    <div class="info-card">
+        <h3>USER</h3>
+        <h2>{{ request.user.username }}</h2>
+        <p>Logged in as {{ request.user.role }}</p>
+    </div>
+
+    <div class="info-card">
+        <h3>STATUS</h3>
+        <h2>Ready</h2>
+        <p>Accounts operations enabled</p>
+    </div>
+</div>
+
+<div class="section-box">
+    <h3>Quick Links</h3>
+    <div class="quick-links">
+        <div class="quick-card">
+            <a href="{% url 'finance_dashboard' %}">💰 Open Finance Dashboard</a>
+        </div>
+        <div class="quick-card">
+            <a href="{% url 'expense_list' %}">💸 View Expenses</a>
+        </div>
+        <div class="quick-card">
+            <a href="{% url 'income_list' %}">💵 View Income</a>
+        </div>
+        <div class="quick-card">
+            <a href="{% url 'sales_dashboard' %}">📊 Open Sales Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

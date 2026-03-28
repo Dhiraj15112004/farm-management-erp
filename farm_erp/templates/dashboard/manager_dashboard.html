@@ -1,0 +1,38 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Manager Dashboard{% endblock %}
+{% block page_title %}Manager Dashboard{% endblock %}
+{% block page_subtitle %}Operations, labor and seasonal planning overview{% endblock %}
+
+{% block content %}
+<div class="card-grid">
+    <div class="info-card">
+        <h3>ACTIVE TASKS</h3>
+        <h2>12</h2>
+        <p>4 tasks due today</p>
+    </div>
+
+    <div class="info-card">
+        <h3>FIELD STAFF PRESENT</h3>
+        <h2>21</h2>
+        <p>2 on leave</p>
+    </div>
+
+    <div class="info-card">
+        <h3>OPEN MACHINERY JOBS</h3>
+        <h2>5</h2>
+        <p>1 maintenance overdue</p>
+    </div>
+
+    <div class="info-card">
+        <h3>LOW STOCK ITEMS</h3>
+        <h2>3</h2>
+        <p>Need store follow-up</p>
+    </div>
+</div>
+
+<div class="section-box">
+    <h3>Manager Quick Summary</h3>
+    <p>Welcome {{ request.user.username }}. Aa page par seasonal planning, task monitoring, labor status ane machinery overview aavse.</p>
+</div>
+{% endblock %}

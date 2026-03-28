@@ -1,0 +1,35 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Workers{% endblock %}
+{% block page_title %}Workers{% endblock %}
+{% block page_subtitle %}All registered workers{% endblock %}
+
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom: 15px;">
+        <a href="{% url 'add_worker' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add Worker</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Role</th>
+            <th>Daily Wage</th>
+            <th>Actions</th>
+        </tr>
+        {% for worker in workers %}
+        <tr>
+            <td>{{ worker.name }}</td>
+            <td>{{ worker.phone }}</td>
+            <td>{{ worker.role }}</td>
+            <td>{{ worker.daily_wage }}</td>
+            <td>
+                <a href="{% url 'edit_worker' worker.id %}">Edit</a> |
+                <a href="{% url 'delete_worker' worker.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

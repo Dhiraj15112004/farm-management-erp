@@ -1,0 +1,41 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Field Crop Plans{% endblock %}
+{% block page_title %}Field Crop Plans{% endblock %}
+{% block page_subtitle %}Assigned crops by field and season{% endblock %}
+
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom: 15px;">
+        <a href="{% url 'add_field_crop_plan' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add Field Crop Plan</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Season</th>
+            <th>Field</th>
+            <th>Crop</th>
+            <th>Sowing Date</th>
+            <th>Harvest Date</th>
+            <th>Expected Yield</th>
+            <th>Expected Budget</th>
+            <th>Actions</th>
+        </tr>
+        {% for plan in field_plans %}
+        <tr>
+            <td>{{ plan.season.name }}</td>
+            <td>{{ plan.field.name }}</td>
+            <td>{{ plan.crop.name }}</td>
+            <td>{{ plan.sowing_date }}</td>
+            <td>{{ plan.expected_harvest_date }}</td>
+            <td>{{ plan.expected_yield }}</td>
+            <td>{{ plan.expected_budget }}</td>
+            <td>
+                <a href="{% url 'edit_field_crop_plan' plan.id %}">Edit</a> |
+                <a href="{% url 'delete_field_crop_plan' plan.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

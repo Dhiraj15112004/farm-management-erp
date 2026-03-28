@@ -1,0 +1,23 @@
+{% extends 'base/erp_base.html' %}
+{% block title %}Income{% endblock %}
+{% block page_title %}Income{% endblock %}
+{% block page_subtitle %}All income records{% endblock %}
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom:15px;">
+        <a href="{% url 'add_income' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add Income</a>
+    </div>
+    <table>
+        <tr><th>Source</th><th>Amount</th><th>Date</th><th>Description</th><th>Actions</th></tr>
+        {% for income in incomes %}
+        <tr>
+            <td>{{ income.source }}</td>
+            <td>{{ income.amount }}</td>
+            <td>{{ income.date }}</td>
+            <td>{{ income.description }}</td>
+            <td><a href="{% url 'edit_income' income.id %}">Edit</a> | <a href="{% url 'delete_income' income.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

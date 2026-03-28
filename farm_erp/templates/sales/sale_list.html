@@ -1,0 +1,24 @@
+{% extends 'base/erp_base.html' %}
+{% block title %}Sales{% endblock %}
+{% block page_title %}Sales{% endblock %}
+{% block page_subtitle %}All sales records{% endblock %}
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom:15px;">
+        <a href="{% url 'add_sale' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add Sale</a>
+    </div>
+    <table>
+        <tr><th>Crop</th><th>Buyer</th><th>Quantity</th><th>Amount</th><th>Date</th><th>Actions</th></tr>
+        {% for sale in sales %}
+        <tr>
+            <td>{{ sale.crop }}</td>
+            <td>{{ sale.buyer }}</td>
+            <td>{{ sale.quantity }}</td>
+            <td>{{ sale.amount }}</td>
+            <td>{{ sale.date }}</td>
+            <td><a href="{% url 'edit_sale' sale.id %}">Edit</a> | <a href="{% url 'delete_sale' sale.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}  

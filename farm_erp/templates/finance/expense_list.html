@@ -1,0 +1,23 @@
+{% extends 'base/erp_base.html' %}
+{% block title %}Expenses{% endblock %}
+{% block page_title %}Expenses{% endblock %}
+{% block page_subtitle %}All expense records{% endblock %}
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom:15px;">
+        <a href="{% url 'add_expense' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add Expense</a>
+    </div>
+    <table>
+        <tr><th>Category</th><th>Amount</th><th>Date</th><th>Description</th><th>Actions</th></tr>
+        {% for expense in expenses %}
+        <tr>
+            <td>{{ expense.category }}</td>
+            <td>{{ expense.amount }}</td>
+            <td>{{ expense.date }}</td>
+            <td>{{ expense.description }}</td>
+            <td><a href="{% url 'edit_expense' expense.id %}">Edit</a> | <a href="{% url 'delete_expense' expense.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

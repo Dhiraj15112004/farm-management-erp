@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Farm ERP{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <style>
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .quick-card {
+            background: white;
+            padding: 18px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .quick-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .quick-card a {
+            text-decoration: none;
+            color: #178443;
+            font-weight: 600;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="erp-container">
+
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <h2>🌾 Farm ERP Core</h2>
+                <p>POWERED BY DHIRAJ PATEL</p>
+            </div>
+
+            <nav class="sidebar-menu">
+
+                {% if request.user.role == 'admin' %}
+                    <a href="{% url 'admin_dashboard' %}" class="menu-item">📊 Dashboard Overview</a>
+                    <a href="{% url 'user_list' %}" class="menu-item">👥 User Management</a>
+                    <a href="{% url 'master_dashboard' %}" class="menu-item">⚙ Master Setup</a>
+                    <a href="{% url 'crop_season_dashboard' %}" class="menu-item">🌱 Crop &amp; Season Mgmt</a>
+                    <a href="{% url 'labor_dashboard' %}" class="menu-item">👷 Worker &amp; Labor</a>
+                    <a href="{% url 'machinery_dashboard' %}" class="menu-item">🚜 Machinery Logs</a>
+                    <a href="{% url 'inventory_dashboard' %}" class="menu-item">📦 Inventory &amp; Store</a>
+                    <a href="{% url 'finance_dashboard' %}" class="menu-item">💰 Finance &amp; Accounts</a>
+                    <a href="{% url 'sales_dashboard' %}" class="menu-item">📊 Sales &amp; Harvest</a>
+                {% endif %}
+
+                {% if request.user.role == 'manager' %}
+                    <a href="{% url 'manager_dashboard' %}" class="menu-item">📊 Dashboard Overview</a>
+                    <a href="{% url 'master_dashboard' %}" class="menu-item">⚙ Master Setup</a>
+                    <a href="{% url 'crop_season_dashboard' %}" class="menu-item">🌱 Crop &amp; Season Mgmt</a>
+                    <a href="{% url 'labor_dashboard' %}" class="menu-item">👷 Worker &amp; Labor</a>
+                    <a href="{% url 'machinery_dashboard' %}" class="menu-item">🚜 Machinery Logs</a>
+                    <a href="{% url 'inventory_dashboard' %}" class="menu-item">📦 Inventory &amp; Store</a>
+                {% endif %}
+
+                {% if request.user.role == 'supervisor' %}
+                    <a href="{% url 'supervisor_dashboard' %}" class="menu-item">📊 Dashboard Overview</a>
+                    <a href="{% url 'crop_season_dashboard' %}" class="menu-item">🌱 Crop &amp; Season Mgmt</a>
+                    <a href="{% url 'labor_dashboard' %}" class="menu-item">👷 Worker &amp; Labor</a>
+                {% endif %}
+
+                {% if request.user.role == 'storekeeper' %}
+                    <a href="{% url 'store_dashboard' %}" class="menu-item">📊 Dashboard Overview</a>
+                    <a href="{% url 'inventory_dashboard' %}" class="menu-item">📦 Inventory &amp; Store</a>
+                {% endif %}
+
+                {% if request.user.role == 'accountant' %}
+                    <a href="{% url 'accounts_dashboard' %}" class="menu-item">📊 Dashboard Overview</a>
+                    <a href="{% url 'finance_dashboard' %}" class="menu-item">💰 Finance &amp; Accounts</a>
+                    <a href="{% url 'sales_dashboard' %}" class="menu-item">📊 Sales &amp; Harvest</a>
+                {% endif %}
+
+                {% if request.user.role == 'sales' %}
+                    <a href="{% url 'sales_dashboard' %}" class="menu-item">📊 Dashboard Overview</a>
+                    <a href="{% url 'sales_dashboard' %}" class="menu-item">📊 Sales &amp; Harvest</a>
+                {% endif %}
+
+                {% if request.user.role == 'field_staff' %}
+                    <a href="{% url 'field_dashboard' %}" class="menu-item">📊 Dashboard Overview</a>
+                {% endif %}
+
+                <a href="{% url 'logout' %}" class="menu-item logout-btn">↩ Logout</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>{% block page_title %}Dashboard{% endblock %}</h1>
+                    <p>{% block page_subtitle %}Farm ERP Overview{% endblock %}</p>
+                </div>
+
+                <div class="topbar-user">
+                    <div class="user-circle">
+                        {{ request.user.username|slice:":2"|upper }}
+                    </div>
+                    <div>
+                        <h4>{{ request.user.username }}</h4>
+                        <p>{{ request.user.role }}</p>
+                    </div>
+                </div>
+            </header>
+
+            <section class="content-area">
+                {% block content %}{% endblock %}
+            </section>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends 'base/erp_base.html' %}
+{% block title %}Sales & Harvest{% endblock %}
+{% block page_title %}Sales & Harvest{% endblock %}
+{% block page_subtitle %}Harvest and sales tracking{% endblock %}
+
+{% block content %}
+<div class="card-grid">
+    <div class="info-card">
+        <h3>HARVEST</h3>
+        <h2>{{ harvest_count }}</h2>
+        <p>Total Harvest</p>
+    </div>
+    <div class="info-card">
+        <h3>SALES</h3>
+        <h2>{{ sales_count }}</h2>
+        <p>Total Sales</p>
+    </div>
+    <div class="info-card">
+        <h3>STATUS</h3>
+        <h2>Active</h2>
+        <p>Sales module running</p>
+    </div>
+</div>
+
+<div class="section-box">
+    <h3>Quick Links</h3>
+    <div class="quick-links">
+        <div class="quick-card"><a href="{% url 'harvest_list' %}">🌾 View Harvest</a></div>
+        <div class="quick-card"><a href="{% url 'sale_list' %}">🧾 View Sales</a></div>
+        <div class="quick-card"><a href="{% url 'add_harvest' %}">➕ Add Harvest</a></div>
+        <div class="quick-card"><a href="{% url 'add_sale' %}">➕ Add Sale</a></div>
+    </div>
+</div>
+{% endblock %}

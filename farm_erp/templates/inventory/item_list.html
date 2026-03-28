@@ -1,0 +1,24 @@
+{% extends 'base/erp_base.html' %}
+{% block title %}Inventory Items{% endblock %}
+{% block page_title %}Inventory Items{% endblock %}
+{% block page_subtitle %}All inventory items{% endblock %}
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom:15px;">
+        <a href="{% url 'add_item' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add Item</a>
+    </div>
+    <table>
+        <tr><th>Name</th><th>Category</th><th>Unit</th><th>Quantity</th><th>Minimum Stock</th><th>Actions</th></tr>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.category }}</td>
+            <td>{{ item.unit }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.minimum_stock }}</td>
+            <td><a href="{% url 'edit_item' item.id %}">Edit</a> | <a href="{% url 'delete_item' item.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

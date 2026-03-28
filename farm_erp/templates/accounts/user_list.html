@@ -1,0 +1,36 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}User Management{% endblock %}
+{% block page_title %}User Management{% endblock %}
+{% block page_subtitle %}Admin can manage system users and roles{% endblock %}
+
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom: 15px;">
+        <a href="{% url 'add_user' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add User</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.is_active }}</td>
+            <td>
+                <a href="{% url 'edit_user' user.id %}">Edit</a> |
+                <a href="{% url 'delete_user' user.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

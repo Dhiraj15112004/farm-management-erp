@@ -1,0 +1,41 @@
+{% extends 'base/erp_base.html' %}
+{% block title %}Inventory & Store{% endblock %}
+{% block page_title %}Inventory & Store{% endblock %}
+{% block page_subtitle %}Stock management and material issue tracking{% endblock %}
+
+{% block content %}
+<div class="card-grid">
+    <div class="info-card">
+        <h3>INVENTORY ITEMS</h3>
+        <h2>{{ item_count }}</h2>
+        <p>Total stock items</p>
+    </div>
+    <div class="info-card">
+        <h3>STOCK IN</h3>
+        <h2>{{ stock_in_count }}</h2>
+        <p>Incoming stock records</p>
+    </div>
+    <div class="info-card">
+        <h3>STOCK OUT</h3>
+        <h2>{{ stock_out_count }}</h2>
+        <p>Issued stock records</p>
+    </div>
+    <div class="info-card">
+        <h3>STATUS</h3>
+        <h2>Active</h2>
+        <p>Inventory system running</p>
+    </div>
+</div>
+
+<div class="section-box">
+    <h3>Quick Links</h3>
+    <div class="quick-links">
+        <div class="quick-card"><a href="{% url 'item_list' %}">📦 View Items</a></div>
+        <div class="quick-card"><a href="{% url 'stock_in_list' %}">📥 View Stock In</a></div>
+        <div class="quick-card"><a href="{% url 'stock_out_list' %}">📤 View Stock Out</a></div>
+        <div class="quick-card"><a href="{% url 'add_item' %}">➕ Add Item</a></div>
+        <div class="quick-card"><a href="{% url 'add_stock_in' %}">➕ Add Stock In</a></div>
+        <div class="quick-card"><a href="{% url 'add_stock_out' %}">➕ Add Stock Out</a></div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Field Staff Dashboard{% endblock %}
+{% block page_title %}Field Staff Dashboard{% endblock %}
+{% block page_subtitle %}Basic field user access panel{% endblock %}
+
+{% block content %}
+<div class="card-grid">
+    <div class="info-card">
+        <h3>FIELD ACCESS</h3>
+        <h2>Active</h2>
+        <p>Limited user dashboard access</p>
+    </div>
+
+    <div class="info-card">
+        <h3>USER</h3>
+        <h2>{{ request.user.username }}</h2>
+        <p>Logged in as {{ request.user.role }}</p>
+    </div>
+
+    <div class="info-card">
+        <h3>ROLE</h3>
+        <h2>Field Staff</h2>
+        <p>Restricted module visibility</p>
+    </div>
+
+    <div class="info-card">
+        <h3>STATUS</h3>
+        <h2>Ready</h2>
+        <p>Field dashboard enabled</p>
+    </div>
+</div>
+
+<div class="section-box">
+    <h3>Information</h3>
+    <p>
+        Aa dashboard field staff mate che. Ahiya limited access aapvama aavyo che
+        ane role-based login successfully kaam kare che.
+    </p>
+</div>
+{% endblock %}

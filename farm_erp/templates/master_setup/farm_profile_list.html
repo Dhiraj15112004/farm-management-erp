@@ -1,0 +1,35 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Farm Profiles{% endblock %}
+{% block page_title %}Farm Profiles{% endblock %}
+{% block page_subtitle %}Registered farm profile records{% endblock %}
+
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom: 15px;">
+        <a href="{% url 'add_farm' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add Farm</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Owner Name</th>
+            <th>Location</th>
+            <th>Total Area</th>
+            <th>Actions</th>
+        </tr>
+        {% for farm in farm_profiles %}
+        <tr>
+            <td>{{ farm.name }}</td>
+            <td>{{ farm.owner_name }}</td>
+            <td>{{ farm.location }}</td>
+            <td>{{ farm.total_area }}</td>
+            <td>
+                <a href="{% url 'edit_farm' farm.id %}">Edit</a> |
+                <a href="{% url 'delete_farm' farm.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+{% block page_title %}Dashboard Overview{% endblock %}
+{% block page_subtitle %}Farm Management ERP - Real-time Insights{% endblock %}
+
+{% block content %}
+
+<div class="card-grid">
+    <div class="info-card">
+        <h3>FARMS</h3>
+        <h2>{{ farm_count }}</h2>
+        <p>Total registered farms</p>
+    </div>
+
+    <div class="info-card">
+        <h3>FIELDS</h3>
+        <h2>{{ field_count }}</h2>
+        <p>Total field plots</p>
+    </div>
+
+    <div class="info-card">
+        <h3>CROPS</h3>
+        <h2>{{ crop_count }}</h2>
+        <p>Crop master records</p>
+    </div>
+
+    <div class="info-card">
+        <h3>SEASONS</h3>
+        <h2>{{ season_count }}</h2>
+        <p>Active and planned seasons</p>
+    </div>
+</div>
+
+<div class="card-grid">
+    <div class="info-card">
+        <h3>WORKERS</h3>
+        <h2>{{ worker_count }}</h2>
+        <p>Labor records</p>
+    </div>
+
+    <div class="info-card">
+        <h3>MACHINES</h3>
+        <h2>{{ machine_count }}</h2>
+        <p>Machinery registered</p>
+    </div>
+
+    <div class="info-card">
+        <h3>INVENTORY ITEMS</h3>
+        <h2>{{ inventory_count }}</h2>
+        <p>Store items available</p>
+    </div>
+
+    <div class="info-card">
+        <h3>SALES</h3>
+        <h2>{{ sales_count }}</h2>
+        <p>Sales records created</p>
+    </div>
+</div>
+
+<div class="card-grid">
+    <div class="info-card">
+        <h3>TOTAL EXPENSE</h3>
+        <h2>₹ {{ total_expense }}</h2>
+        <p>Expense entries recorded</p>
+    </div>
+
+    <div class="info-card">
+        <h3>TOTAL INCOME</h3>
+        <h2>₹ {{ total_income }}</h2>
+        <p>Income entries recorded</p>
+    </div>
+
+    <div class="info-card">
+        <h3>PROFIT</h3>
+        <h2>₹ {{ profit }}</h2>
+        <p>Income - Expense</p>
+    </div>
+
+    <div class="info-card">
+        <h3>HARVEST</h3>
+        <h2>{{ harvest_count }}</h2>
+        <p>Total harvest records</p>
+    </div>
+</div>
+
+<div class="section-box">
+    <h3>Module Summary</h3>
+    <table>
+        <tr>
+            <th>Module</th>
+            <th>Total Records</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>Master Setup</td>
+            <td>{{ farm_count }} Farms / {{ field_count }} Fields / {{ crop_count }} Crops</td>
+            <td>Active</td>
+        </tr>
+        <tr>
+            <td>Crop & Season</td>
+            <td>{{ season_count }} Seasons / {{ plan_count }} Plans</td>
+            <td>Active</td>
+        </tr>
+        <tr>
+            <td>Worker & Labor</td>
+            <td>{{ worker_count }} Workers / {{ task_count }} Tasks</td>
+            <td>Active</td>
+        </tr>
+        <tr>
+            <td>Machinery</td>
+            <td>{{ machine_count }} Equipment / {{ usage_count }} Usage Logs</td>
+            <td>Active</td>
+        </tr>
+        <tr>
+            <td>Inventory</td>
+            <td>{{ inventory_count }} Items / {{ stock_in_count }} In / {{ stock_out_count }} Out</td>
+            <td>Active</td>
+        </tr>
+        <tr>
+            <td>Finance</td>
+            <td>{{ expense_count }} Expenses / {{ income_count }} Income</td>
+            <td>Active</td>
+        </tr>
+        <tr>
+            <td>Sales & Harvest</td>
+            <td>{{ harvest_count }} Harvest / {{ sales_count }} Sales</td>
+            <td>Active</td>
+        </tr>
+    </table>
+</div>
+
+<div class="section-box">
+    <h3>Recent Admin Overview</h3>
+    <p>
+        Aa dashboard tamara complete Farm ERP system no summary batave che.
+        Aama master data, season planning, labor, machinery, inventory, finance ane sales badha modules no combined overview male che.
+    </p>
+</div>
+
+{% endblock %}

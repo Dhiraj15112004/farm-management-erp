@@ -1,0 +1,14 @@
+{% extends 'base/erp_base.html' %}
+{% block title %}Delete Usage Log{% endblock %}
+{% block page_title %}Delete Usage Log{% endblock %}
+{% block page_subtitle %}Confirm delete action{% endblock %}
+
+{% block content %}
+<div class="section-box">
+    <p>Are you sure you want to delete usage log of <strong>{{ usage.equipment.name }}</strong>?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" style="padding:10px 16px; background:red; color:white; border:none; border-radius:8px;">Yes, Delete</button>
+    </form>
+</div>
+{% endblock %}

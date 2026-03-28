@@ -1,0 +1,31 @@
+{% extends 'base/erp_base.html' %}
+{% block title %}Maintenance{% endblock %}
+{% block page_title %}Maintenance{% endblock %}
+{% block page_subtitle %}Maintenance records{% endblock %}
+
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom:15px;">
+        <a href="{% url 'add_maintenance' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add Maintenance</a>
+    </div>
+    <table>
+        <tr>
+            <th>Equipment</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        {% for item in maintenances %}
+        <tr>
+            <td>{{ item.equipment.name }}</td>
+            <td>{{ item.date }}</td>
+            <td>{{ item.description }}</td>
+            <td>
+                <a href="{% url 'edit_maintenance' item.id %}">Edit</a> |
+                <a href="{% url 'delete_maintenance' item.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

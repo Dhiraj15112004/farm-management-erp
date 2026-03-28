@@ -1,0 +1,46 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Machinery Logs{% endblock %}
+{% block page_title %}Machinery Logs{% endblock %}
+{% block page_subtitle %}Equipment and usage tracking{% endblock %}
+
+{% block content %}
+<div class="card-grid">
+    <div class="info-card">
+        <h3>EQUIPMENT</h3>
+        <h2>{{ equipment_count }}</h2>
+        <p>Total Equipment</p>
+    </div>
+
+    <div class="info-card">
+        <h3>USAGE</h3>
+        <h2>{{ usage_count }}</h2>
+        <p>Usage Records</p>
+    </div>
+
+    <div class="info-card">
+        <h3>MAINTENANCE</h3>
+        <h2>{{ maintenance_count }}</h2>
+        <p>Maintenance Logs</p>
+    </div>
+
+    <div class="info-card">
+        <h3>STATUS</h3>
+        <h2>Active</h2>
+        <p>Machinery system running</p>
+    </div>
+</div>
+
+<div class="section-box">
+    <h3>Quick Links</h3>
+
+    <div class="quick-links">
+        <div class="quick-card"><a href="{% url 'machinery_equipment_list' %}">🚜 View Equipments</a></div>
+        <div class="quick-card"><a href="{% url 'usage_list' %}">🕒 View Usage Logs</a></div>
+        <div class="quick-card"><a href="{% url 'maintenance_list' %}">🛠 View Maintenance</a></div>
+        <div class="quick-card"><a href="{% url 'machinery_add_equipment' %}">➕ Add Equipment</a></div>
+        <div class="quick-card"><a href="{% url 'add_usage' %}">➕ Add Usage Log</a></div>
+        <div class="quick-card"><a href="{% url 'add_maintenance' %}">➕ Add Maintenance</a></div>
+    </div>
+</div>
+{% endblock %}

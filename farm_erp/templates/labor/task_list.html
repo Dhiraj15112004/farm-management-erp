@@ -1,0 +1,35 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Tasks{% endblock %}
+{% block page_title %}Labor Tasks{% endblock %}
+{% block page_subtitle %}Assigned labor tasks{% endblock %}
+
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom: 15px;">
+        <a href="{% url 'add_task' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add Task</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Task Name</th>
+            <th>Worker</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.task_name }}</td>
+            <td>{{ task.worker.name }}</td>
+            <td>{{ task.date }}</td>
+            <td>{{ task.status }}</td>
+            <td>
+                <a href="{% url 'edit_task' task.id %}">Edit</a> |
+                <a href="{% url 'delete_task' task.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

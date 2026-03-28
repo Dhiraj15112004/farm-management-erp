@@ -1,0 +1,33 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Crop List{% endblock %}
+{% block page_title %}Crop Master{% endblock %}
+{% block page_subtitle %}All available crop records{% endblock %}
+
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom: 15px;">
+        <a href="{% url 'add_crop' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add Crop</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Season</th>
+            <th>Duration Days</th>
+            <th>Actions</th>
+        </tr>
+        {% for crop in crops %}
+        <tr>
+            <td>{{ crop.name }}</td>
+            <td>{{ crop.season }}</td>
+            <td>{{ crop.duration_days }}</td>
+            <td>
+                <a href="{% url 'edit_crop' crop.id %}">Edit</a> |
+                <a href="{% url 'delete_crop' crop.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

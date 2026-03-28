@@ -1,0 +1,33 @@
+{% extends 'base/erp_base.html' %}
+
+{% block title %}Attendance{% endblock %}
+{% block page_title %}Attendance{% endblock %}
+{% block page_subtitle %}Worker attendance records{% endblock %}
+
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom: 15px;">
+        <a href="{% url 'add_attendance' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add Attendance</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Worker</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        {% for item in attendance %}
+        <tr>
+            <td>{{ item.worker.name }}</td>
+            <td>{{ item.date }}</td>
+            <td>{{ item.status }}</td>
+            <td>
+                <a href="{% url 'edit_attendance' item.id %}">Edit</a> |
+                <a href="{% url 'delete_attendance' item.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

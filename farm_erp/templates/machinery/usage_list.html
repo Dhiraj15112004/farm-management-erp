@@ -1,0 +1,33 @@
+{% extends 'base/erp_base.html' %}
+{% block title %}Usage Logs{% endblock %}
+{% block page_title %}Usage Logs{% endblock %}
+{% block page_subtitle %}Equipment usage records{% endblock %}
+
+{% block content %}
+<div class="section-box">
+    <div style="margin-bottom:15px;">
+        <a href="{% url 'add_usage' %}" style="padding:10px 16px; background:#178443; color:white; text-decoration:none; border-radius:8px;">+ Add Usage Log</a>
+    </div>
+    <table>
+        <tr>
+            <th>Equipment</th>
+            <th>Date</th>
+            <th>Hours</th>
+            <th>Fuel Used</th>
+            <th>Actions</th>
+        </tr>
+        {% for item in usages %}
+        <tr>
+            <td>{{ item.equipment.name }}</td>
+            <td>{{ item.date }}</td>
+            <td>{{ item.hours }}</td>
+            <td>{{ item.fuel_used }}</td>
+            <td>
+                <a href="{% url 'edit_usage' item.id %}">Edit</a> |
+                <a href="{% url 'delete_usage' item.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
